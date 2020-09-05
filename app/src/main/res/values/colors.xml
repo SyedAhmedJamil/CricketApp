@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryOld">#00B567</color>
+    <color name="colorPrimary">#3DCC8E</color>
+    <color name="colorPrimaryDarkOld">#00B567</color>
+    <color name="colorPrimaryDark">#0003B898</color>
+    <color name="background">#f2f3f8</color>
+    <color name="colorAccent">#FDD835</color>
+    <color name="navigationBarColor">#FFFFFF</color>
+    <color name="colorBorderLight">#ECECEC</color>
+    <color name="pureWhite">#FFFFFF</color>
+    <color name="pureWhiteOverlay">#FAF5F6FB</color>
+    <color name="teamNames">#464749</color>
+    <color name="match_item_title">#D5464749</color>
+    <color name="match_item_venue">#9F464749</color>
+    <color name="bottom_nav_ripple_color">#14000000</color>
+</resources>
