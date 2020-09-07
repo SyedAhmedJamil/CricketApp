@@ -282,7 +282,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="start"
-                            android:text="Shahid Afridi Khan 2"
+                            android:text="Shahid Afridi Khan"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
