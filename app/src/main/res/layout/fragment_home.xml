@@ -65,7 +65,7 @@
                             android:layout_height="70dp"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="24dp"
-                            android:layout_marginBottom="32dp"
+                            android:layout_marginBottom="50dp"
                             android:background="@drawable/circle"
                             android:padding="10dp"
                             android:scaleType="fitCenter"
@@ -117,7 +117,7 @@
                             android:layout_height="70dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="32dp"
+                            android:layout_marginBottom="50dp"
                             android:background="@drawable/circle"
                             android:padding="10dp"
                             android:scaleType="fitCenter"
@@ -226,12 +226,10 @@
                     android:id="@+id/ball_component"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="3dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -239,88 +237,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient_appbar">
-
-                        <!--                        <LinearLayout
-                            android:id="@+id/linearLayout5"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="visible"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:background="@drawable/gradient_card"
-                                android:gravity="end"
-                                android:orientation="horizontal"
-                                android:paddingLeft="20dp"
-                                android:paddingTop="11dp"
-                                android:paddingRight="20dp"
-                                android:paddingBottom="11dp">
-
-                                <TextView
-
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="start"
-                                    android:text="Batsman"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".2"
-                                    android:gravity="center"
-                                    android:text="R"
-                                    android:textColor="@color/pureWhiteOverlay"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".2"
-                                    android:gravity="center"
-                                    android:text="B"
-                                    android:textColor="@color/pureWhiteOverlay"
-                                    android:textStyle="bold" />
-
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".2"
-                                    android:gravity="center"
-                                    android:text="4"
-                                    android:textColor="@color/pureWhiteOverlay"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".2"
-                                    android:gravity="center"
-                                    android:text="6"
-                                    android:textColor="@color/pureWhiteOverlay"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".3"
-                                    android:gravity="right"
-                                    android:text="SR"
-                                    android:textColor="@color/pureWhiteOverlay"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-                        </LinearLayout>-->
-
 
                         <TextView
                             android:id="@+id/textView_ball"
@@ -364,6 +280,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
                     app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="0dp"
@@ -374,7 +291,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@color/pureWhiteOverlay">
 
                         <TextView
                             android:id="@+id/textView_ball1"
@@ -500,18 +418,19 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/live_prediction_teamA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ball_component">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@color/pureWhiteOverlay">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -519,6 +438,7 @@
                             android:text="Pakistan"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -529,17 +449,19 @@
                     android:id="@+id/live_score_batsman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="10dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/live_prediction_teamA">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@color/pureWhiteOverlay">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -753,19 +675,21 @@
                     android:id="@+id/live_score_baller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="16dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="3dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/live_score_batsman">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@color/pureWhiteOverlay">
 
                         <LinearLayout
                             android:layout_width="0dp"

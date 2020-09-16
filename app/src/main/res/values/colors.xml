@@ -9,7 +9,7 @@
     <color name="navigationBarColor">#FFFFFF</color>
     <color name="colorBorderLight">#ECECEC</color>
     <color name="pureWhite">#FFFFFF</color>
-    <color name="pureWhiteOverlay">#FAF5F6FB</color>
+    <color name="pureWhiteOverlay">#F5F6FB</color>
     <color name="teamNames">#464749</color>
     <color name="match_item_title">#D5464749</color>
     <color name="match_item_venue">#9F464749</color>
