@@ -109,13 +109,13 @@
                         android:textColor="@color/text_dark"
                         android:textSize="30dp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs"
+                        app:layout_constraintBottom_toTopOf="@id/total_overs1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/total_overs"
+                        android:id="@+id/total_overs1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient_card"
@@ -166,13 +166,13 @@
                         android:textColor="@color/text_dark"
                         android:textSize="30dp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs"
+                        app:layout_constraintBottom_toTopOf="@id/total_overs2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/total_overs"
+                        android:id="@+id/total_overs2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient_card"
@@ -223,13 +223,13 @@
                         android:textColor="@color/text_dark"
                         android:textSize="30dp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs"
+                        app:layout_constraintBottom_toTopOf="@id/total_overs3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/total_overs"
+                        android:id="@+id/total_overs3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient_card"
