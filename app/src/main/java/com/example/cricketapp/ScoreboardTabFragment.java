@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.helper.widget.Flow;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
+
 public class ScoreboardTabFragment extends Fragment {
 
-    LinearLayout yay_layout;
+    Flow flow;
 
     public ScoreboardTabFragment() {
         // Required empty public constructor
@@ -31,15 +34,15 @@ public class ScoreboardTabFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        yay_layout = view.findViewById(R.id.yay_layout);
+        flow = view.findViewById(R.id.flow);
         ImageView textView = view.findViewById(R.id.sr);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(yay_layout.getVisibility() == View.VISIBLE)
-                    yay_layout.setVisibility(View.GONE);
+                if(flow.getVisibility() == View.VISIBLE)
+                    flow.setVisibility(View.GONE);
                 else
-                    yay_layout.setVisibility(View.VISIBLE);
+                    flow.setVisibility(View.VISIBLE);
             }
         });
 
