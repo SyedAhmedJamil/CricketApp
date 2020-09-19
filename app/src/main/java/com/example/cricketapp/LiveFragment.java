@@ -46,6 +46,7 @@ public class LiveFragment extends Fragment {
         viewPager2 = view.findViewById(R.id.pager);
         viewPager2Adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(viewPager2Adapter);
+        viewPager2.setUserInputEnabled(false);
         tabLayout = view.findViewById(R.id.live_tabs);
         new TabLayoutMediator(tabLayout,viewPager2,false,true,(tab, position) -> {
             switch (position)
