@@ -1,4 +1,4 @@
-package com.example.cricketapp;
+package com.example.cricketapp.tabs_fragments;
 
 import android.os.Bundle;
 
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.cricketapp.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class ScoreboardTabFragment extends Fragment {

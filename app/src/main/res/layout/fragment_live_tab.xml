@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="3dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,9 +62,9 @@
                         android:layout_gravity="center"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
-                        android:textStyle="bold"
+                        android:text="OVER 5"
                         android:textColor="@color/text_dark"
-                        android:text="OVER 5" />
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -215,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#F8FFF8"
             app:cardCornerRadius="3dp"
@@ -350,7 +350,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#F8FFF8"
             app:cardCornerRadius="3dp"
@@ -456,8 +456,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="start"
-                            android:textColor="@color/text_dark"
                             android:text="Shahid Afridi Khan"
+                            android:textColor="@color/text_dark"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -466,8 +466,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight=".2"
                             android:gravity="center"
-                            android:textColor="@color/text_dark"
                             android:text="4"
+                            android:textColor="@color/text_dark"
                             android:textSize="13sp" />
 
                         <TextView
@@ -523,8 +523,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="start"
-                            android:textColor="@color/text_dark"
                             android:text="Yonus Khan"
+                            android:textColor="@color/text_dark"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -587,9 +587,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#F8FFF8"
             app:cardCornerRadius="3dp"
             app:layout_constraintBottom_toBottomOf="parent"

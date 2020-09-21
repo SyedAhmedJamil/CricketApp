@@ -1,4 +1,4 @@
-package com.example.cricketapp;
+package com.example.cricketapp.main_fragmanets;
 
 import android.os.Bundle;
 
@@ -9,6 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.cricketapp.CricketService;
+import com.example.cricketapp.MatchDetailsList;
+import com.example.cricketapp.MatchDetailsListAdapter;
+import com.example.cricketapp.R;
+import com.example.cricketapp.UnsafeOkHttpClient;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

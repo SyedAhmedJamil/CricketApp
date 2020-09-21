@@ -6,22 +6,22 @@
     app:startDestination="@id/fragment_home">
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.example.cricketapp.HomeFragment"
+        android:name="com.example.cricketapp.main_fragmanets.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/fragment_recent"
-        android:name="com.example.cricketapp.RecentsFragment"
+        android:name="com.example.cricketapp.main_fragmanets.RecentsFragment"
         android:label="Recents"
         tools:layout="@layout/fragment_recents" />
     <fragment
         android:id="@+id/fragment_live"
-        android:name="com.example.cricketapp.LiveFragment"
+        android:name="com.example.cricketapp.main_fragmanets.LiveFragment"
         android:label="Live"
         tools:layout="@layout/fragment_live" />
     <fragment
         android:id="@+id/fragment_upcoming"
-        android:name="com.example.cricketapp.UpcomingFragment"
+        android:name="com.example.cricketapp.main_fragmanets.UpcomingFragment"
         android:label="Upcoming"
         tools:layout="@layout/fragment_upcoming" />
 </navigation>
