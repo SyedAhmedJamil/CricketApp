@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -35,17 +37,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LiveFragment extends Fragment {
 
     MatchDetailsListAdapter adapter;
+    NavController navController;
 
     public LiveFragment() {
-        // Required empty public constructor
+     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        navController = ((NavHostFragment)(getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container))).getNavController();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_live, container, false);
-
         RecyclerView recyclerView = view.findViewById(R.id.match_details_recyclerview);
         adapter = new MatchDetailsListAdapter();
+        adapter.setOnClickListener(new MatchDetailsListAdapter.OnClickListener() {
+            @Override
+            public void onClick() {
+                navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4);
+            }
+        });
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
