@@ -44,7 +44,7 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
             holder.matchItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickListener.onClick();
+                    onClickListener.onClick(matchDetails.getMainScreenMatchId());
                 }
             });
         }
@@ -91,6 +91,6 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
     }
 
     public interface OnClickListener {
-        void onClick();
+        void onClick(Integer matchId);
     }
 }

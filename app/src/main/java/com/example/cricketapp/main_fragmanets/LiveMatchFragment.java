@@ -11,14 +11,26 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.cricketapp.CricketService;
+import com.example.cricketapp.MatchDetailsList;
 import com.example.cricketapp.MatchDetailsListAdapter;
+import com.example.cricketapp.MatchSummary;
 import com.example.cricketapp.R;
+import com.example.cricketapp.UnsafeOkHttpClient;
 import com.example.cricketapp.tabs_fragments.InfoTabFragment;
 import com.example.cricketapp.tabs_fragments.LiveTabFragment;
 import com.example.cricketapp.tabs_fragments.ScoreboardTabFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveMatchFragment extends Fragment {
 
@@ -26,10 +38,39 @@ public class LiveMatchFragment extends Fragment {
     ViewPager2 viewPager2;
     ViewPager2Adapter viewPager2Adapter;
     TabLayout tabLayout;
+    MatchSummary matchSummary;
+    TextView textView;
     public LiveMatchFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://api.crickssix.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(unsafeOkHttpClient)
+                .build();
+        CricketService cricketService = retrofit.create(CricketService.class);
+        String match_id = getArguments().getString("match_id");
+        Call<MatchSummary> call = cricketService.getMatchDetail(match_id);
+        call.enqueue(new Callback<MatchSummary>() {
+            @Override
+            public void onResponse(Call<MatchSummary> call, Response<MatchSummary> response) {
+                 matchSummary = response.body();
+                textView.setText(matchSummary.matchData.getCurrentlyPlayingTeamName() + " vs " + matchSummary.matchData.getPlayedTeamName());
+            }
+
+            @Override
+            public void onFailure(Call<MatchSummary> call, Throwable t) {
+
+            }
+        });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +100,8 @@ public class LiveMatchFragment extends Fragment {
 
             }
         }).attach();
+
+        textView = view.findViewById(R.id.match_title);
     }
 
 

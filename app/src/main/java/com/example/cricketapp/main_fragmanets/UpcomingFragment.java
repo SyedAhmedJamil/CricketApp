@@ -54,7 +54,7 @@ public class UpcomingFragment extends Fragment {
                 .build();
         CricketService cricketService = retrofit.create(CricketService.class);
 
-        Call<MatchDetailsList> call = cricketService.getMatchDetailsList();
+        Call<MatchDetailsList> call = cricketService.getAllMatches();
         call.enqueue(new Callback<MatchDetailsList>() {
             @Override
             public void onResponse(Call<MatchDetailsList> call, Response<MatchDetailsList> response) {

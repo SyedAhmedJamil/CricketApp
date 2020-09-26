@@ -1,5 +1,6 @@
 package com.example.cricketapp.main_fragmanets;
 
+import android.icu.util.BuddhistCalendar;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -56,8 +57,10 @@ public class LiveFragment extends Fragment {
         adapter = new MatchDetailsListAdapter();
         adapter.setOnClickListener(new MatchDetailsListAdapter.OnClickListener() {
             @Override
-            public void onClick() {
-                navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4);
+            public void onClick(Integer matchId) {
+                Bundle bundle = new Bundle();
+                bundle.putString("match_id", matchId.toString());
+                navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4,bundle);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -78,7 +81,7 @@ public class LiveFragment extends Fragment {
                 .build();
         CricketService cricketService = retrofit.create(CricketService.class);
 
-        Call<MatchDetailsList> call = cricketService.getMatchDetailsList();
+        Call<MatchDetailsList> call = cricketService.getAllMatches();
         call.enqueue(new Callback<MatchDetailsList>() {
             @Override
             public void onResponse(Call<MatchDetailsList> call, Response<MatchDetailsList> response) {
