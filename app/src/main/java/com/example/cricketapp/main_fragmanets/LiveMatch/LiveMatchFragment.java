@@ -1,4 +1,4 @@
-package com.example.cricketapp.main_fragmanets;
+package com.example.cricketapp.main_fragmanets.LiveMatch;
 
 import android.os.Bundle;
 
@@ -40,41 +40,15 @@ public class LiveMatchFragment extends Fragment {
     TabLayout tabLayout;
     MatchSummary matchSummary;
     TextView textView;
+    LiveMatchViewModel viewModel;
     public LiveMatchFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.crickssix.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(unsafeOkHttpClient)
-                .build();
-        CricketService cricketService = retrofit.create(CricketService.class);
-        String match_id = getArguments().getString("match_id");
-        Call<MatchSummary> call = cricketService.getMatchDetail(match_id);
-        call.enqueue(new Callback<MatchSummary>() {
-            @Override
-            public void onResponse(Call<MatchSummary> call, Response<MatchSummary> response) {
-                 matchSummary = response.body();
-                textView.setText(matchSummary.matchData.getCurrentlyPlayingTeamName() + " vs " + matchSummary.matchData.getPlayedTeamName());
-            }
-
-            @Override
-            public void onFailure(Call<MatchSummary> call, Throwable t) {
-
-            }
-        });
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_live_match, container, false);
+
         return view;
     }
 

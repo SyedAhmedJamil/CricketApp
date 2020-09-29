@@ -1,4 +1,4 @@
-package com.example.cricketapp.main_fragmanets;
+package com.example.cricketapp.main_fragmanets.Live;
 
 import android.icu.util.BuddhistCalendar;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cricketapp.CricketService;
+import com.example.cricketapp.MainActivity;
+import com.example.cricketapp.MatchDetails;
 import com.example.cricketapp.MatchDetailsList;
 import com.example.cricketapp.UnsafeOkHttpClient;
 import com.example.cricketapp.tabs_fragments.InfoTabFragment;
@@ -27,6 +31,8 @@ import com.example.cricketapp.R;
 import com.example.cricketapp.tabs_fragments.ScoreboardTabFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -38,7 +44,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LiveFragment extends Fragment {
 
     MatchDetailsListAdapter adapter;
-    NavController navController;
+    LiveViewModel liveViewModel;
 
     public LiveFragment() {
      }
@@ -46,7 +52,7 @@ public class LiveFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        navController = ((NavHostFragment)(getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container))).getNavController();
+        liveViewModel = new ViewModelProvider(this).get(LiveViewModel.class);
 
     }
 
@@ -60,7 +66,7 @@ public class LiveFragment extends Fragment {
             public void onClick(Integer matchId) {
                 Bundle bundle = new Bundle();
                 bundle.putString("match_id", matchId.toString());
-                navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4,bundle);
+                MainActivity.navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4,bundle);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -69,32 +75,12 @@ public class LiveFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.crickssix.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(unsafeOkHttpClient)
-                .build();
-        CricketService cricketService = retrofit.create(CricketService.class);
-
-        Call<MatchDetailsList> call = cricketService.getAllMatches();
-        call.enqueue(new Callback<MatchDetailsList>() {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        liveViewModel.getLiveMatchList().observe(getViewLifecycleOwner(), new Observer<List<MatchDetails>>() {
             @Override
-            public void onResponse(Call<MatchDetailsList> call, Response<MatchDetailsList> response) {
-                MatchDetailsList matchDetailsList = response.body();
-                adapter.setMatchDetailsList(matchDetailsList.matchDetailsList);
-            }
-
-            @Override
-            public void onFailure(Call<MatchDetailsList> call, Throwable t) {
-            }
+            public void onChanged(List<MatchDetails> matchDetails) {
+                adapter.setMatchDetailsList(matchDetails); }
         });
-
     }
-
-
 }
