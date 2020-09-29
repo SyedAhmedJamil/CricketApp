@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_recents" />
     <fragment
         android:id="@+id/fragment_live"
-        android:name="com.example.cricketapp.main_fragmanets.Live.LiveFragment"
+        android:name="com.example.cricketapp.main_fragmanets.live.LiveFragment"
         android:label="Live"
         tools:layout="@layout/fragment_live" >
         <action
@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_upcoming" />
     <fragment
         android:id="@+id/liveMatchFragment4"
-        android:name="com.example.cricketapp.main_fragmanets.LiveMatch.LiveMatchFragment"
+        android:name="com.example.cricketapp.main_fragmanets.livematch.LiveMatchFragment"
         android:label="LiveMatchFragment" >
         <argument
             android:name="match_id"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.cricketapp.main_fragmanets.LiveMatch.LiveMatchViewModel" />
+            type="com.example.cricketapp.main_fragmanets.livematch.LiveMatchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

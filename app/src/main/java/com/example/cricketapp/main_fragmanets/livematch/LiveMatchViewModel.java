@@ -1,9 +1,10 @@
-package com.example.cricketapp.main_fragmanets.LiveMatch;
+package com.example.cricketapp.main_fragmanets.livematch;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.cricketapp.CricketService;
+import com.example.cricketapp.MatchDetails;
 import com.example.cricketapp.MatchSummary;
 import com.example.cricketapp.UnsafeOkHttpClient;
 
@@ -16,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveMatchViewModel  extends ViewModel {
     private MutableLiveData<MatchSummary> matchSummary;
-    public String matchTitle = "none";
+    private MatchDetails match;
 
     public MutableLiveData<MatchSummary> getMatchSummary() {
         if (matchSummary != null)
