@@ -1,14 +1,11 @@
 package com.example.cricketapp;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -17,7 +14,7 @@ import java.util.List;
 
 public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsListAdapter.MatchDetailsViewHolder> {
 
-    private List<MatchDetails> matchDetailsList;
+    private List<Match> matchList;
     private OnClickListener onClickListener;
 
     @NonNull
@@ -29,22 +26,22 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
 
     @Override
     public void onBindViewHolder(@NonNull MatchDetailsViewHolder holder, int position) {
-        if (matchDetailsList != null) {
-            MatchDetails matchDetails = matchDetailsList.get(position);
-            String venue = matchDetails.getVenue().trim() + " on " + matchDetails.getStartDate() + " • " + matchDetails.getStartTime();
+        if (matchList != null) {
+            Match match = matchList.get(position);
+            String venue = match.getVenue().trim() + " on " + match.getStartDate() + " • " + match.getStartTime();
             holder.matchVenue.setText(venue);
-            holder.teamAName.setText(matchDetails.getTeamAname().trim());
-            holder.teamBName.setText(matchDetails.getTeamBname().trim());
-            String matchTitle = matchDetails.getTeamAname() + " vs " + matchDetails.getTeamBname();
+            holder.teamAName.setText(match.getTeamAname().trim());
+            holder.teamBName.setText(match.getTeamBname().trim());
+            String matchTitle = match.getTeamAname() + " vs " + match.getTeamBname();
             holder.matchTitle.setText(matchTitle);
 //            holder.matchDate.setText(matchDetails.getStartDate());
 //            holder.matchTime.setText(matchDetails.getStartTime());
-            holder.matchOvers.setText(matchDetails.getTotalover());
+            holder.matchOvers.setText(match.getTotalover());
 
             holder.matchItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickListener.onClick(matchDetails.getMainScreenMatchId());
+                    onClickListener.onClick(match.getMainScreenMatchId());
                 }
             });
         }
@@ -52,14 +49,14 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
 
     @Override
     public int getItemCount() {
-        if (matchDetailsList != null) {
-            return matchDetailsList.size();
+        if (matchList != null) {
+            return matchList.size();
         }
         return 0;
     }
 
-    public void setMatchDetailsList(List<MatchDetails> matchDetailsList) {
-        this.matchDetailsList = matchDetailsList;
+    public void setMatchList(List<Match> matchList) {
+        this.matchList = matchList;
         notifyDataSetChanged();
     }
 

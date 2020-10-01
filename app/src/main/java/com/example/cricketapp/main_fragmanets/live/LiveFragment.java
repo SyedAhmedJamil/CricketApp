@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cricketapp.MainActivity;
-import com.example.cricketapp.MatchDetails;
+import com.example.cricketapp.Match;
 import com.example.cricketapp.MatchDetailsListAdapter;
 import com.example.cricketapp.R;
 import com.example.cricketapp.databinding.FragmentLiveMatchBinding;
@@ -55,10 +55,10 @@ public class LiveFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        liveViewModel.getLiveMatchList().observe(getViewLifecycleOwner(), new Observer<List<MatchDetails>>() {
+        liveViewModel.getLiveMatchList().observe(getViewLifecycleOwner(), new Observer<List<Match>>() {
             @Override
-            public void onChanged(List<MatchDetails> matchDetails) {
-                adapter.setMatchDetailsList(matchDetails); }
+            public void onChanged(List<Match> matchDetails) {
+                adapter.setMatchList(matchDetails); }
         });
     }
 }

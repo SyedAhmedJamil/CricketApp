@@ -1,15 +1,12 @@
 package com.example.cricketapp.main_fragmanets.live;
 
-import android.widget.Toast;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cricketapp.CricketService;
-import com.example.cricketapp.MatchDetails;
-import com.example.cricketapp.MatchDetailsList;
+import com.example.cricketapp.Match;
+import com.example.cricketapp.MatchList;
 import com.example.cricketapp.UnsafeOkHttpClient;
 
 import java.util.List;
@@ -23,9 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveViewModel extends ViewModel {
 
-    MutableLiveData<List<MatchDetails>> liveMatchList;
+    MutableLiveData<List<Match>> liveMatchList;
 
-    public LiveData<List<MatchDetails>> getLiveMatchList() {
+    public LiveData<List<Match>> getLiveMatchList() {
 
         if (liveMatchList != null)
             return liveMatchList;
@@ -39,15 +36,15 @@ public class LiveViewModel extends ViewModel {
                 .build();
         CricketService cricketService = retrofit.create(CricketService.class);
 
-        Call<MatchDetailsList> call = cricketService.getAllMatches();
-        call.enqueue(new Callback<MatchDetailsList>() {
+        Call<MatchList> call = cricketService.getAllMatches();
+        call.enqueue(new Callback<MatchList>() {
             @Override
-            public void onResponse(Call<MatchDetailsList> call, Response<MatchDetailsList> response) {
-                liveMatchList.setValue(response.body().matchDetailsList);
+            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+                liveMatchList.setValue(response.body().matchList);
             }
 
             @Override
-            public void onFailure(Call<MatchDetailsList> call, Throwable t) {
+            public void onFailure(Call<MatchList> call, Throwable t) {
                 int x = 3;
             }
         });

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cricketapp.CricketService;
-import com.example.cricketapp.MatchDetailsList;
+import com.example.cricketapp.MatchList;
 import com.example.cricketapp.MatchDetailsListAdapter;
 import com.example.cricketapp.R;
 import com.example.cricketapp.UnsafeOkHttpClient;
@@ -55,16 +55,16 @@ public class RecentsFragment extends Fragment {
                 .build();
         CricketService cricketService = retrofit.create(CricketService.class);
 
-        Call<MatchDetailsList> call = cricketService.getAllMatches();
-        call.enqueue(new Callback<MatchDetailsList>() {
+        Call<MatchList> call = cricketService.getAllMatches();
+        call.enqueue(new Callback<MatchList>() {
             @Override
-            public void onResponse(Call<MatchDetailsList> call, Response<MatchDetailsList> response) {
-                MatchDetailsList matchDetailsList = response.body();
-                adapter.setMatchDetailsList(matchDetailsList.matchDetailsList);
+            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+                MatchList matchList = response.body();
+                adapter.setMatchList(matchList.matchList);
             }
 
             @Override
-            public void onFailure(Call<MatchDetailsList> call, Throwable t) {
+            public void onFailure(Call<MatchList> call, Throwable t) {
             }
         });
 

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MatchDetailsList {
+public class MatchList {
     @SerializedName("match_list")
-    public List<MatchDetails> matchDetailsList;
+    public List<Match> matchList;
 }
