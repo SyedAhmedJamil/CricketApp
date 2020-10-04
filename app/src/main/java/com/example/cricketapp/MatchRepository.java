@@ -19,6 +19,7 @@ public class MatchRepository {
 
     private MatchDAO matchDAO;
     private LiveData<List<Match>> matches;
+    public boolean refreshData = false;
 
     public MatchRepository(Application application)
     {
@@ -29,7 +30,7 @@ public class MatchRepository {
 
     public LiveData<List<Match>> getMatches() {
 
-        if (matches.getValue() == null) {
+        if (refreshData) {
             OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://api.crickssix.com/")
@@ -44,6 +45,7 @@ public class MatchRepository {
                     for (Match match : response.body().matchList) {
                         insert(match);
                     }
+                    refreshData = false;
                 }
 
                 @Override
@@ -52,16 +54,24 @@ public class MatchRepository {
                 }
             });
         }
+
         return matches;
     }
-
 
     public void insert (Match match)
     {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                matchDAO.insert(match);
+                try
+                {
+                    matchDAO.insert(match);
+                }
+                catch (Exception e)
+                {
+                    //Do nothing
+                }
+
             }
         });
 
