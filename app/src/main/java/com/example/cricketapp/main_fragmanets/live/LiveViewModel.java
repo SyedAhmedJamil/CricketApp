@@ -25,13 +25,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveViewModel extends AndroidViewModel {
 
-    MutableLiveData<List<Match>> liveMatchList;
+    LiveData<List<Match>> matches;
     MatchRepository matchRepository ;
 
     public LiveViewModel(@NonNull Application application) {
         super(application);
         matchRepository = new MatchRepository(application);
+        matches = matchRepository.getMatches();
+    }
 
+    LiveData<List<Match>> getMatches()
+    {
+        return matches;
     }
 
 

@@ -41,31 +41,4 @@ public class UpcomingFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.crickssix.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(unsafeOkHttpClient)
-                .build();
-        CricketService cricketService = retrofit.create(CricketService.class);
-
-        Call<MatchList> call = cricketService.getAllMatches();
-        call.enqueue(new Callback<MatchList>() {
-            @Override
-            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
-                MatchList matchList = response.body();
-                adapter.setMatchList(matchList.matchList);
-            }
-
-            @Override
-            public void onFailure(Call<MatchList> call, Throwable t) {
-            }
-        });
-
-    }
 }

@@ -55,10 +55,11 @@ public class LiveFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        liveViewModel.getLiveMatchList().observe(getViewLifecycleOwner(), new Observer<List<Match>>() {
+        liveViewModel.getMatches().observe(getViewLifecycleOwner(), new Observer<List<Match>>() {
             @Override
-            public void onChanged(List<Match> matchDetails) {
-                adapter.setMatchList(matchDetails); }
+            public void onChanged(List<Match> matches) {
+                adapter.setMatchList(matches);
+            }
         });
     }
 }

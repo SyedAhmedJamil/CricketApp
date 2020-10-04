@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface CricketService {
     @GET("api/MatchData/CurrentMatches")
-    Call<List<Match>> getAllMatches ();
+    Call<MatchList> getAllMatches ();
 
     @GET("api/MatchData/GetMatchDetail")
     Call<MatchSummary> getMatchDetail( @Query("currentMatchid") String matchId );
