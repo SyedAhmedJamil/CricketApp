@@ -24,10 +24,11 @@ public class MatchRepository {
     {
         AppDatabase appDatabase = AppDatabase.getInstance(application);
         matchDAO = appDatabase.getMatchDAO();
+        matches = matchDAO.getMatches();
     }
 
     public LiveData<List<Match>> getMatches() {
-        matches = matchDAO.getMatches();
+
         if (matches.getValue() == null) {
             OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
             Retrofit retrofit = new Retrofit.Builder()
@@ -43,7 +44,6 @@ public class MatchRepository {
                     for (Match match : response.body().matchList) {
                         insert(match);
                     }
-                    matches = matchDAO.getMatches();
                 }
 
                 @Override
@@ -58,6 +58,12 @@ public class MatchRepository {
 
     public void insert (Match match)
     {
-        matchDAO.insert(match);
+        AppDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                matchDAO.insert(match);
+            }
+        });
+
     }
 }

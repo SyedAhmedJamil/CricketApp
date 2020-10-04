@@ -14,7 +14,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public static AppDatabase INSTANCE;
-    private static String appDatabaseName = "cricket_app_database";
+    private static String appDatabaseName = "cricket_app_database.db";
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
