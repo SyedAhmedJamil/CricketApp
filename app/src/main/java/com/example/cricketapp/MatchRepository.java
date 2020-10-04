@@ -19,56 +19,48 @@ public class MatchRepository {
 
     private MatchDAO matchDAO;
     private LiveData<List<Match>> matches;
-    public boolean refreshData = false;
 
-    public MatchRepository(Application application)
-    {
+    public MatchRepository(Application application) {
         AppDatabase appDatabase = AppDatabase.getInstance(application);
         matchDAO = appDatabase.getMatchDAO();
         matches = matchDAO.getMatches();
     }
 
     public LiveData<List<Match>> getMatches() {
-
-        if (refreshData) {
-            OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://api.crickssix.com/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(unsafeOkHttpClient)
-                    .build();
-            CricketService cricketService = retrofit.create(CricketService.class);
-            Call<MatchList> call = cricketService.getAllMatches();
-            call.enqueue(new Callback<MatchList>() {
-                @Override
-                public void onResponse(Call<MatchList> call, Response<MatchList> response) {
-                    for (Match match : response.body().matchList) {
-                        insert(match);
-                    }
-                    refreshData = false;
-                }
-
-                @Override
-                public void onFailure(Call<MatchList> call, Throwable t) {
-
-                }
-            });
-        }
-
         return matches;
     }
 
-    public void insert (Match match)
-    {
+    public void refresh() {
+        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://api.crickssix.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(unsafeOkHttpClient)
+                .build();
+        CricketService cricketService = retrofit.create(CricketService.class);
+        Call<MatchList> call = cricketService.getAllMatches();
+        call.enqueue(new Callback<MatchList>() {
+            @Override
+            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+                for (Match match : response.body().matchList) {
+                    insert(match);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MatchList> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void insert(Match match) {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                try
-                {
+                try {
                     matchDAO.insert(match);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     //Do nothing
                 }
 

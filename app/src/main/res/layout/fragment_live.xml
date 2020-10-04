@@ -14,6 +14,7 @@ android:layout_height="match_parent">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         app:title="Live Matches"
+        app:menu="@menu/live_match_menu"
         app:titleTextColor="@color/pureWhite"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">

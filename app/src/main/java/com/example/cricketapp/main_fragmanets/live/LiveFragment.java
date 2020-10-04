@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,6 +21,7 @@ import com.example.cricketapp.Match;
 import com.example.cricketapp.MatchDetailsListAdapter;
 import com.example.cricketapp.R;
 import com.example.cricketapp.databinding.FragmentLiveMatchBinding;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.List;
 
@@ -40,6 +43,20 @@ public class LiveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_live, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.match_details_recyclerview);
+        MaterialToolbar topAppBar = view.findViewById(R.id.topAppBar);
+        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.fragment_live_refresh :
+                    {
+                        liveViewModel.refresh();
+                    }
+                }
+                return false;
+            }
+        });
         adapter = new MatchDetailsListAdapter();
         adapter.setOnClickListener(new MatchDetailsListAdapter.OnClickListener() {
             @Override

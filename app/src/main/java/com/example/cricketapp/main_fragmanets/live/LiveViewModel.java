@@ -31,6 +31,7 @@ public class LiveViewModel extends AndroidViewModel {
     public LiveViewModel(@NonNull Application application) {
         super(application);
         matchRepository = new MatchRepository(application);
+        //matchRepository.refresh();
         matches = matchRepository.getMatches();
     }
 
@@ -39,6 +40,8 @@ public class LiveViewModel extends AndroidViewModel {
         return matches;
     }
 
-
-
+    void refresh()
+    {
+        matchRepository.refresh();
+    }
 }

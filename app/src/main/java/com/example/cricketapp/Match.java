@@ -13,12 +13,12 @@ public class Match {
     @SerializedName("MainScreenMatchId")
     @PrimaryKey
     @NonNull
-    private Integer MainScreenMatchId;
+    private Integer MainScreenMatchId = 1;
 
     @SerializedName("TeamAname")
-    private String TeamAname;
+    private String TeamAname = "TEAM A";
     @SerializedName("TeamBname")
-    private String TeamBname;
+    private String TeamBname = "TEAM B";
     @SerializedName("TeamAstats")
     private String TeamAstats;
     @SerializedName("TeamBstats")
@@ -26,23 +26,23 @@ public class Match {
     @SerializedName("Message")
     private String Message;
     @SerializedName("StartDate")
-    private String StartDate;
+    private String StartDate = "14 September";
     @SerializedName("StartTime")
-    private String StartTime;
+    private String StartTime = "2.30 pm";
     @SerializedName("TeamApicURL")
     private String TeamApicURL;
     @SerializedName("TeamBpicURL")
     private String TeamBpicURL;
     @SerializedName("venue")
-    private String venue;
+    private String venue = "College cricket ground.2 Semi final. ";
     @SerializedName("totalover")
-    private String totalover;
+    private String totalover = "Overs 20.";
     @SerializedName("IsToss")
-    private boolean IsToss;
+    private boolean IsToss = true;
     @SerializedName("IsStarted")
-    private boolean IsStarted;
+    private boolean IsStarted = true;
     @SerializedName("IsActive")
-    private boolean IsActive;
+    private boolean IsActive = true;
 
     public Integer getMainScreenMatchId() {
         return MainScreenMatchId;
