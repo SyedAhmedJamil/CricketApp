@@ -7,6 +7,9 @@
         <variable
             name="viewmodel"
             type="com.example.cricketapp.main_fragmanets.livematch.LiveMatchViewModel" />
+        <variable
+            name="match_id"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,6 +79,7 @@
                                     android:paddingBottom="5dp"
                                     android:textColor="@color/text"
                                     android:textSize="15sp"
+                                    android:text="@{viewmodel.getUpdate(match_id).matchData.playedTeamName}"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +117,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="0dp"
-                                android:text="@{viewmodel.matchSummary.matchData.currentlyPlayingTeamName"
+                                android:text="PAK"
                                 android:textColor="@color/pureWhite"
                                 android:textSize="15sp"
                                 app:layout_constraintBottom_toTopOf="@+id/team_a_score"
@@ -165,7 +169,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="0dp"
-                                android:text="@{viewmodel.matchSummary.matchData.playedTeamName}"
+                                android:text="ENG"
                                 android:textColor="@color/pureWhite"
                                 android:textSize="15sp"
                                 app:layout_constraintBottom_toTopOf="@+id/team_b_score"

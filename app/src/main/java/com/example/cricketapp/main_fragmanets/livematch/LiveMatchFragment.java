@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -14,9 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.cricketapp.LiveMatch;
 import com.example.cricketapp.MatchDetailsListAdapter;
-import com.example.cricketapp.MatchSummary;
 import com.example.cricketapp.R;
+import com.example.cricketapp.databinding.FragmentLiveMatchBinding;
 import com.example.cricketapp.tabs_fragments.InfoTabFragment;
 import com.example.cricketapp.tabs_fragments.LiveTabFragment;
 import com.example.cricketapp.tabs_fragments.ScoreboardTabFragment;
@@ -25,38 +27,33 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class LiveMatchFragment extends Fragment {
 
-    MatchDetailsListAdapter adapter;
-    ViewPager2 viewPager2;
-    ViewPager2Adapter viewPager2Adapter;
-    TabLayout tabLayout;
-    MatchSummary matchSummary;
-    TextView textView;
     LiveMatchViewModel viewModel;
+    String match_id;
     public LiveMatchFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        match_id = getArguments().getString("match_id");
         viewModel = new ViewModelProvider(this).get(LiveMatchViewModel.class);
-        String match_id = getArguments().getString("match_id");
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_live_match, container, false);
+        FragmentLiveMatchBinding binding = FragmentLiveMatchBinding.inflate(inflater, container, false);
+        binding.setLifecycleOwner(this);
+        binding.setViewmodel(viewModel);
+        binding.setMatchId(match_id);
 
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewPager2 = view.findViewById(R.id.pager);
-        viewPager2Adapter = new ViewPager2Adapter(this);
+        ViewPager2 viewPager2 = binding.pager;
+        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
         viewPager2.setAdapter(viewPager2Adapter);
         viewPager2.setUserInputEnabled(false);
-        tabLayout = view.findViewById(R.id.live_tabs);
+        TabLayout tabLayout = binding.liveTabs;
         new TabLayoutMediator(tabLayout,viewPager2,false,true,(tab, position) -> {
             switch (position)
             {
@@ -73,9 +70,8 @@ public class LiveMatchFragment extends Fragment {
             }
         }).attach();
 
-        textView = view.findViewById(R.id.match_title);
+        return binding.getRoot();
     }
-
 
     private class ViewPager2Adapter extends FragmentStateAdapter {
         public ViewPager2Adapter(Fragment fragment) {

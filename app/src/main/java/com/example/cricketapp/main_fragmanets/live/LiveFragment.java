@@ -20,7 +20,6 @@ import com.example.cricketapp.MainActivity;
 import com.example.cricketapp.Match;
 import com.example.cricketapp.MatchDetailsListAdapter;
 import com.example.cricketapp.R;
-import com.example.cricketapp.databinding.FragmentLiveMatchBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.List;
@@ -61,7 +60,9 @@ public class LiveFragment extends Fragment {
         adapter.setOnClickListener(new MatchDetailsListAdapter.OnClickListener() {
             @Override
             public void onClick(Integer matchId) {
-                MainActivity.navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4);
+                Bundle bundle = new Bundle();
+                bundle.putString("match_id", matchId.toString());
+                MainActivity.navController.navigate(R.id.action_fragment_live_to_liveMatchFragment4,bundle);
             }
         });
         recyclerView.setAdapter(adapter);

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MatchSummary {
+public class LiveMatch {
 
     @SerializedName("MatchDetail")
     public MatchData matchData;

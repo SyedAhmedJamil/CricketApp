@@ -1,11 +1,13 @@
 package com.example.cricketapp.main_fragmanets.livematch;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.cricketapp.CricketService;
+import com.example.cricketapp.LiveMatch;
+import com.example.cricketapp.LiveMatchRepository;
 import com.example.cricketapp.Match;
-import com.example.cricketapp.MatchSummary;
 import com.example.cricketapp.UnsafeOkHttpClient;
 
 import okhttp3.OkHttpClient;
@@ -16,36 +18,20 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveMatchViewModel  extends ViewModel {
-    private MutableLiveData<MatchSummary> matchSummary;
-    private Match match;
 
-    public MutableLiveData<MatchSummary> getMatchSummary() {
-        if (matchSummary != null)
-            return matchSummary;
-        else  matchSummary = new MutableLiveData<>();
+    private LiveData<LiveMatch> liveMatch;
+    private LiveMatchRepository liveMatchRepository;
 
-        OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://api.crickssix.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(unsafeOkHttpClient)
-                .build();
-        CricketService cricketService = retrofit.create(CricketService.class);
-        Call<MatchSummary> call = cricketService.getMatchDetail("2345");
-        call.enqueue(new Callback<MatchSummary>() {
-            @Override
-            public void onResponse(Call<MatchSummary> call, Response<MatchSummary> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<MatchSummary> call, Throwable t) {
-
-            }
-        });
-
-
-        return matchSummary;
+    public LiveMatchViewModel()
+    {
+        liveMatchRepository = new LiveMatchRepository();
     }
+
+    public LiveData<LiveMatch> getUpdate(String matchId)
+    {
+        if (liveMatch == null)
+            liveMatch = liveMatchRepository.getUpdate(matchId);
+        return liveMatch;
+    }
+
 }

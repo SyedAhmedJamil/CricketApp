@@ -1,7 +1,5 @@
 package com.example.cricketapp;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -11,5 +9,5 @@ public interface CricketService {
     Call<MatchList> getAllMatches ();
 
     @GET("api/MatchData/GetMatchDetail")
-    Call<MatchSummary> getMatchDetail( @Query("currentMatchid") String matchId );
+    Call<LiveMatch> getMatchDetail(@Query("currentMatchid") String matchId );
 }
