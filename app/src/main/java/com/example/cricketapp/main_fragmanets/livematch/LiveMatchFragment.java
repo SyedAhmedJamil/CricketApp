@@ -28,7 +28,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class LiveMatchFragment extends Fragment {
 
     LiveMatchViewModel viewModel;
-    String match_id;
     public LiveMatchFragment() {
 
     }
@@ -36,9 +35,8 @@ public class LiveMatchFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        match_id = getArguments().getString("match_id");
         viewModel = new ViewModelProvider(this).get(LiveMatchViewModel.class);
-
+        viewModel.matchId = getArguments().getString("match_id");
 
     }
 
@@ -47,7 +45,6 @@ public class LiveMatchFragment extends Fragment {
         FragmentLiveMatchBinding binding = FragmentLiveMatchBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setViewmodel(viewModel);
-        binding.setMatchId(match_id);
 
         ViewPager2 viewPager2 = binding.pager;
         ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);

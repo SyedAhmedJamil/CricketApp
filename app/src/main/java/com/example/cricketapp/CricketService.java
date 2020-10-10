@@ -10,4 +10,7 @@ public interface CricketService {
 
     @GET("api/MatchData/GetMatchDetail")
     Call<LiveMatch> getMatchDetail(@Query("currentMatchid") String matchId );
+
+    @GET("api/MatchData/GetCurrentRecordId")
+    Call<RecordId> getCurrentRecordId(@Query("currentMatchid") String matchId );
 }

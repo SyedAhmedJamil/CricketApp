@@ -7,9 +7,6 @@
         <variable
             name="viewmodel"
             type="com.example.cricketapp.main_fragmanets.livematch.LiveMatchViewModel" />
-        <variable
-            name="match_id"
-            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,7 +76,7 @@
                                     android:paddingBottom="5dp"
                                     android:textColor="@color/text"
                                     android:textSize="15sp"
-                                    android:text="@{viewmodel.getUpdate(match_id).matchData.playedTeamName}"
+                                    android:text="@{viewmodel.getUpdate().matchData.playedTeamName}"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"

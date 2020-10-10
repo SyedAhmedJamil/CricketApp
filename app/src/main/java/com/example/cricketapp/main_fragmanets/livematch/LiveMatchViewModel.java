@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.cricketapp.AppDatabase;
 import com.example.cricketapp.CricketService;
 import com.example.cricketapp.LiveMatch;
 import com.example.cricketapp.LiveMatchRepository;
@@ -21,13 +22,14 @@ public class LiveMatchViewModel  extends ViewModel {
 
     private LiveData<LiveMatch> liveMatch;
     private LiveMatchRepository liveMatchRepository;
+    public String matchId;
 
     public LiveMatchViewModel()
     {
         liveMatchRepository = new LiveMatchRepository();
     }
 
-    public LiveData<LiveMatch> getUpdate(String matchId)
+    public LiveData<LiveMatch> getUpdate()
     {
         if (liveMatch == null)
             liveMatch = liveMatchRepository.getUpdate(matchId);

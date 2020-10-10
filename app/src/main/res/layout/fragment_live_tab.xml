@@ -1,777 +1,793 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.example.cricketapp.main_fragmanets.livematch.LiveMatchViewModel" />
+    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/live_tab_container"
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="#FFFFFF"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/ball_component"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="3dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/live_tab_container"
+            android:layout_width="match_parent"
+            android:background="#FFFFFF"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/ball_component"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/gradient_card">
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textView_ball"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="BALL"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="40dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/total_overs"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/total_overs"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="#EFEFEF"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:background="@drawable/gradient_card">
 
                     <TextView
+                        android:id="@+id/textView_ball"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:text="OVER 5"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="BALL"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="40dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/total_overs"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/total_overs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#EFEFEF"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:text='@{"OVER " + viewmodel.update.matchData.currenltyPlayingTeamOvers + "." + viewmodel.update.matchData.currenltyPlayingTeamBallno}'
+                            android:textColor="@color/text_dark"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="#EFEFEF"
+                app:cardCornerRadius="3dp"
+                app:layout_constraintBottom_toBottomOf="@id/ball_component"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ball_component"
+                app:layout_constraintTop_toTopOf="@id/ball_component">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[1] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[1]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_ball2"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[2] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[2]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_ball3"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_ball1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[3] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball3"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[3]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_ball4"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_ball2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[4] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball4"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[1]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_ball5"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_ball3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[5] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball5"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[5]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_ball6"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_ball4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[6] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:id="@+id/textView_ball6"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/over_ball_circle"
+                        android:gravity="center"
+                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[6]}'
+                        android:textAlignment="center"
+                        android:textColor="@color/pureWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_ball5"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/live_prediction_teamA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/live_prediction_teamB"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ball_component">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView_pk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@{viewmodel.update.matchData.a}"
                         android:textColor="@color/text_dark"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textView_pk_g"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/green_circle"
+                        android:gravity="center"
+                        android:text="@{viewmodel.update.matchData.b}"
+                        android:textSize="20sp"
+                        android:textColor="@color/pureWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_pk_r"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_pk" />
+
+                    <TextView
+                        android:id="@+id/textView_pk_r"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/red_circle"
+                        android:gravity="center"
+                        android:text="@{viewmodel.update.matchData.c}"
+                        android:textSize="20sp"
+                        android:textColor="@color/pureWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView_pk_g"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_pk"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="14dp"
-            app:cardBackgroundColor="#EFEFEF"
-            app:cardCornerRadius="3dp"
-            app:layout_constraintBottom_toBottomOf="@id/ball_component"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ball_component"
-            app:layout_constraintTop_toTopOf="@id/ball_component">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/live_prediction_teamB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/live_prediction_teamA"
+                app:layout_constraintTop_toBottomOf="@id/ball_component">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView_eng"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@{viewmodel.update.matchData.x}"
+                        android:textColor="@color/text_dark"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView_eng_g"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/green_circle"
+                        android:gravity="center"
+                        android:text="@{viewmodel.update.matchData.y}"
+                        android:textSize="20sp"
+                        android:textColor="@color/pureWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView_eng_r"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_eng" />
+
+                    <TextView
+                        android:id="@+id/textView_eng_r"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/red_circle"
+                        android:gravity="center"
+                        android:text="@{viewmodel.update.matchData.z}"
+                        android:textSize="20sp"
+                        android:textColor="@color/pureWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView_eng_g"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_eng"
+                        app:layout_constraintVertical_bias="0.0" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/live_score_batsman"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                app:cardBackgroundColor="#F8FFF8"
+                app:cardCornerRadius="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/live_prediction_teamA">
 
-                <TextView
-                    android:id="@+id/textView_ball1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_ball2"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView_ball2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="4"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_ball3"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_ball1"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView_ball3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_ball4"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_ball2"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/textView_ball4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="W"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_ball5"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_ball3"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/textView_ball5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_ball6"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_ball4"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/textView_ball6"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/over_ball_circle"
-                    android:gravity="center"
-                    android:text="6"
-                    android:textAlignment="center"
-                    android:textColor="@color/pureWhite"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_ball5"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/live_prediction_teamA"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="5dp"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:layout_constraintEnd_toStartOf="@+id/live_prediction_teamB"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ball_component">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView_pk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="PAK"
-                    android:textColor="@color/text_dark"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView_pk_g"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/green_circle"
-                    android:gravity="center"
-                    android:text="70"
-                    android:textSize="20sp"
-                    android:textColor="@color/pureWhite"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_pk_r"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_pk" />
-
-                <TextView
-                    android:id="@+id/textView_pk_r"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/red_circle"
-                    android:gravity="center"
-                    android:text="45"
-                    android:textSize="20sp"
-                    android:textColor="@color/pureWhite"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView_pk_g"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_pk"
-                    app:layout_constraintVertical_bias="0.0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/live_prediction_teamB"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="10dp"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/live_prediction_teamA"
-            app:layout_constraintTop_toBottomOf="@id/ball_component">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView_eng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="ENG"
-                    android:textColor="@color/text_dark"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView_eng_g"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/green_circle"
-                    android:gravity="center"
-                    android:text="70"
-                    android:textSize="20sp"
-                    android:textColor="@color/pureWhite"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_eng_r"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_eng" />
-
-                <TextView
-                    android:id="@+id/textView_eng_r"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/red_circle"
-                    android:gravity="center"
-                    android:text="50"
-                    android:textSize="20sp"
-                    android:textColor="@color/pureWhite"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_eng_g"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_eng"
-                    app:layout_constraintVertical_bias="0.0" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/live_score_batsman"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="10dp"
-            app:cardBackgroundColor="#F8FFF8"
-            app:cardCornerRadius="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/live_prediction_teamA">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        android:background="@drawable/gradient_card"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="11dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="11dp">
-
-                        <TextView
-
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="Batsman"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="0dp"
+                            android:background="@drawable/gradient_card"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="11dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="11dp">
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="Batsman"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="R"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="B"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="4"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="6"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".3"
+                                android:gravity="right"
+                                android:text="SR"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="R"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="16dp"
+                            android:paddingBottom="8dp">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="@{viewmodel.update.playerDataList.get(1).playerName}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(1).totalScore}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(1).ballsPlayed}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(1).totalFours}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(1).totalSix}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".3"
+                                android:gravity="right"
+                                android:text="@{viewmodel.update.playerDataList.get(1).strikeRate}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="B"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="16dp"
+                            android:paddingBottom="8dp">
 
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="@{viewmodel.update.playerDataList.get(2).playerName}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="4"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(2).totalScore}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="6"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(2).ballsPlayed}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".3"
-                            android:gravity="right"
-                            android:text="SR"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(2).totalFours}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(2).totalSix}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".3"
+                                android:gravity="right"
+                                android:text="@{viewmodel.update.playerDataList.get(2).strikeRate}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="8dp"
-                        android:paddingRight="16dp"
-                        android:paddingBottom="8dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="Shahid Afridi Khan"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="4"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="10"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".3"
-                            android:gravity="right"
-                            android:text="40.00"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="8dp"
-                        android:paddingRight="16dp"
-                        android:paddingBottom="8dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="Yonus Khan"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="4"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="10"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".3"
-                            android:gravity="right"
-                            android:text="40.00"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/live_score_baller"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="#F8FFF8"
-            app:cardCornerRadius="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/live_score_batsman">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/live_score_baller"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#F8FFF8"
+                app:cardCornerRadius="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/live_score_batsman">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        android:background="@drawable/gradient_card"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="11dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="11dp">
-
-                        <TextView
-
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="Baller"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="0dp"
+                            android:background="@drawable/gradient_card"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="11dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="11dp">
+
+                            <TextView
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="Baller"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="O"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="M"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="R"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="W"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".3"
+                                android:gravity="right"
+                                android:text="Eco"
+                                android:textColor="@color/pureWhiteOverlay"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="O"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="16dp"
+                            android:paddingBottom="8dp">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="M"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="@{viewmodel.update.playerDataList.get(0).playerName}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(0).ball}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="R"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="W"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(0).totalScore}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".3"
-                            android:gravity="right"
-                            android:text="Eco"
-                            android:textColor="@color/pureWhiteOverlay"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".2"
+                                android:gravity="center"
+                                android:text="@{viewmodel.update.playerDataList.get(0).totalOut}"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".3"
+                                android:gravity="right"
+                                android:text="0"
+                                android:textColor="@color/text_dark"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:orientation="horizontal"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="8dp"
-                        android:paddingRight="16dp"
-                        android:paddingBottom="8dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="Saeed Ajmal"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="4"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="10"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".2"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".3"
-                            android:gravity="right"
-                            android:text="40.00"
-                            android:textColor="@color/text_dark"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+</layout>
