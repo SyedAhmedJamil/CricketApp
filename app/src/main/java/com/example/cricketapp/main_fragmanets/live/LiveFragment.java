@@ -42,6 +42,8 @@ public class LiveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_live, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.match_details_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(false);
         MaterialToolbar topAppBar = view.findViewById(R.id.topAppBar);
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
