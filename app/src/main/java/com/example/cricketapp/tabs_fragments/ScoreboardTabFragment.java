@@ -19,8 +19,6 @@ import com.google.android.material.card.MaterialCardView;
 
 public class ScoreboardTabFragment extends Fragment {
 
-    Flow flow;
-
     public ScoreboardTabFragment() {
         // Required empty public constructor
     }
@@ -31,22 +29,6 @@ public class ScoreboardTabFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scoreboard_tab, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        flow = view.findViewById(R.id.flow);
-        ImageView textView = view.findViewById(R.id.sr);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(flow.getVisibility() == View.VISIBLE)
-                    flow.setVisibility(View.GONE);
-                else
-                    flow.setVisibility(View.VISIBLE);
-            }
-        });
-
     }
 
 }

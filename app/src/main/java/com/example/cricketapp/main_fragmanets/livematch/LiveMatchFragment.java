@@ -10,9 +10,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.cricketapp.LiveMatch;
@@ -28,6 +32,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class LiveMatchFragment extends Fragment {
 
     LiveMatchViewModel viewModel;
+    FragmentLiveMatchBinding binding;
     public LiveMatchFragment() {
 
     }
@@ -37,21 +42,25 @@ public class LiveMatchFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(LiveMatchViewModel.class);
         viewModel.matchId = getArguments().getString("match_id");
-
+        viewModel.getUpdate();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FragmentLiveMatchBinding binding = FragmentLiveMatchBinding.inflate(inflater, container, false);
+        binding = FragmentLiveMatchBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setViewmodel(viewModel);
 
-        ViewPager2 viewPager2 = binding.pager;
-        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
-        viewPager2.setAdapter(viewPager2Adapter);
-        viewPager2.setUserInputEnabled(false);
         TabLayout tabLayout = binding.liveTabs;
-        new TabLayoutMediator(tabLayout,viewPager2,false,true,(tab, position) -> {
+        ViewPager2 viewPager = binding.pager;
+        ProgressBar progressBar = binding.indeterminateBar;
+
+        viewPager.setVisibility(View.INVISIBLE);
+        viewPager.setUserInputEnabled(false);
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setAdapter(new ViewPager2Adapter(this));
+
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout,viewPager,false,true,(tab, position) -> {
             switch (position)
             {
                 case 0:
@@ -65,10 +74,41 @@ public class LiveMatchFragment extends Fragment {
                     break;
 
             }
-        }).attach();
+        });
+        tabLayoutMediator.attach();
+
+        viewModel.setCallback(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+                viewPager.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.pager.getVisibility() == View.VISIBLE)
+                    binding.pager.setVisibility(View.INVISIBLE);
+                else
+                    binding.pager.setVisibility(View.VISIBLE);
+            }
+        });
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    /*    Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.pager.setVisibility(View.VISIBLE);
+            }
+        },2000);
+    */}
 
     private class ViewPager2Adapter extends FragmentStateAdapter {
         public ViewPager2Adapter(Fragment fragment) {
@@ -82,18 +122,15 @@ public class LiveMatchFragment extends Fragment {
             switch (position)
             {
                 case 0: {
-                    Fragment fragment = new LiveTabFragment();
-                    returnFragment = fragment;
+                    returnFragment = new LiveTabFragment();
                 }
                 break;
                 case 1:{
-                    Fragment fragment = new ScoreboardTabFragment();
-                    returnFragment = fragment;
+                    returnFragment = new ScoreboardTabFragment();
                 }
                 break;
                 case 2:{
-                    Fragment fragment = new InfoTabFragment();
-                    returnFragment = fragment;
+                    returnFragment = new InfoTabFragment();
                 }
             }
             return returnFragment;

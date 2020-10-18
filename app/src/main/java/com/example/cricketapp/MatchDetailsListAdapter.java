@@ -36,7 +36,7 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
             holder.matchTitle.setText(matchTitle);
 //            holder.matchDate.setText(matchDetails.getStartDate());
 //            holder.matchTime.setText(matchDetails.getStartTime());
-            holder.matchOvers.setText(match.getTotalover());
+            holder.matchOvers.setText(match.getTotalover().split("\\.")[0]);
 
             holder.matchItem.setOnClickListener(new View.OnClickListener() {
                 @Override

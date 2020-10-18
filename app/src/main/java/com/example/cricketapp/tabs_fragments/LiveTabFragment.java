@@ -39,14 +39,4 @@ public class LiveTabFragment extends Fragment {
         binding.setViewmodel(viewModel);
         return  binding.getRoot();
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewModel.getUpdate().observe(getViewLifecycleOwner(), new Observer<LiveMatch>() {
-            @Override
-            public void onChanged(LiveMatch liveMatch) {
-                String[] list = liveMatch.matchData.getRecent().split(" \\| ",7);
-            }
-        });
-    }
 }

@@ -5,14 +5,14 @@
     android:id="@+id/matchItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
     android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
     android:layout_marginRight="16dp"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
-    app:cardElevation="2dp"
     app:cardCornerRadius="3dp"
+    app:cardElevation="2dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -21,147 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:cardElevation="0.5dp"
-            app:cardBackgroundColor="@color/pureWhiteOverlay"
-            app:cardCornerRadius="10dp"
-            android:elevation="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/team_a_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            app:layout_constraintVertical_chainStyle="packed">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_pakistan_cricket_team_logo" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/pureWhiteOverlay"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/team_b_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            app:layout_constraintVertical_chainStyle="packed">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_pakistan_cricket_team_logo" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:id="@+id/team_a_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
-            android:text="Team A"
-            android:textColor="@color/text_dark"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
-
-        <ImageView
-            android:id="@+id/textView2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_team_sports"
-            android:textColor="#D5D5D5"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/materialCardView3"
-            app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
-            app:layout_constraintStart_toEndOf="@+id/materialCardView"
-            app:layout_constraintTop_toTopOf="@+id/materialCardView3" />
-
-        <TextView
-            android:id="@+id/team_b_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
-            android:text="Team B"
-            android:textColor="@color/text_dark"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView3"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/rectangle"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-        </LinearLayout>
         <LinearLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical"
-            android:background="@drawable/gradient_card"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/match_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:text="Pakistan won by 4 wickets"
-                android:textSize="12dp" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/rounded_rectangle"
-            android:orientation="vertical"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-            <TextView
-                android:id="@+id/match_overs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:text="20 Overs"
-                android:textSize="12dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:id="@+id/linearLayout3"
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -176,54 +38,174 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/match_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:text="Pakistan vs England"
-                    android:textSize="16dp"
-                    android:textColor="@color/match_item_title"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:text=" | "-->
-<!--                    android:textSize="16dp"-->
-<!--                    android:textColor="@color/match_item_title"-->
-<!--                    android:textAppearance="?attr/textAppearanceHeadline6" />-->
-
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="16sp"
+                    android:textColor="@color/blackVariant"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/match_venue"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="0dp"
+                    android:textAppearance="?attr/textAppearanceCaption"
+                    android:textStyle="bold"
                     android:text="Venue at 17 August • 1:30 pm"
-                    android:textColor="@color/match_item_venue"
-                    android:textSize="11dp"/>
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/team_a"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#EDEDED"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_section"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_flag_24" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/team_b"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#EDEDED"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/footer"
+            app:layout_constraintStart_toStartOf="@+id/team_a"
+            app:layout_constraintTop_toBottomOf="@+id/team_a">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_flag_24" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/team_a_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Pakistan"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="18sp"
+            android:textColor="@color/blackVariant"
+            app:layout_constraintBottom_toBottomOf="@+id/team_a"
+            app:layout_constraintStart_toEndOf="@+id/team_a"
+            app:layout_constraintTop_toTopOf="@+id/team_a" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/vs_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_team_sports"
+            android:textColor="#D5D5D5"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/team_b"
+            app:layout_constraintEnd_toStartOf="@+id/team_b"
+            app:layout_constraintStart_toEndOf="@+id/team_a"
+            app:layout_constraintTop_toTopOf="@+id/team_b" />
+
+        <TextView
+            android:id="@+id/team_b_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="England"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/blackVariant"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/team_b"
+            app:layout_constraintStart_toEndOf="@+id/team_b"
+            app:layout_constraintTop_toTopOf="@+id/team_b" />
+
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/gradient_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/match_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pakistan won by 4 wickets"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/overs"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_rectangle"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header">
+
+            <TextView
+                android:id="@+id/match_overs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 Overs"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/header_section"
             android:layout_width="match_parent"
             android:layout_height="1dp"
 
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></LinearLayout>
-
-
-
-
+            app:layout_constraintTop_toBottomOf="@+id/overs"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

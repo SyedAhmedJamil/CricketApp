@@ -27,7 +27,7 @@ public class LiveMatchRepository {
         liveMatch = new MutableLiveData<>();
     }
 
-    public LiveData<LiveMatch> getUpdate(String matchId) {
+    public LiveData<LiveMatch> getUpdate(String matchId, Runnable callback) {
 
         OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
         Retrofit retrofit = new Retrofit.Builder()
@@ -41,6 +41,7 @@ public class LiveMatchRepository {
             @Override
             public void onResponse(Call<LiveMatch> call, Response<LiveMatch> response) {
                 liveMatch.setValue(response.body());
+                callback.run();
                 checkForUpdates(response.body().matchData.getRecordId(),matchId);
             }
 

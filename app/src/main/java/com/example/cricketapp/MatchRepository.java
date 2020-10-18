@@ -30,7 +30,7 @@ public class MatchRepository {
         return matches;
     }
 
-    public void refresh() {
+    public void refresh(Runnable callback) {
         OkHttpClient unsafeOkHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api.crickssix.com/")
@@ -42,6 +42,7 @@ public class MatchRepository {
         call.enqueue(new Callback<MatchList>() {
             @Override
             public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+                callback.run();
                 for (Match match : response.body().matchList) {
                     insert(match);
                 }

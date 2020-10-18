@@ -19,12 +19,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingTop="16dp"
             android:paddingEnd="10dp"
+            android:paddingStart="0dp"
             android:paddingBottom="10dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -39,54 +40,40 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="88dp"
+                    android:minWidth="110dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="176 / 6"
-                        android:textColor="@color/text_dark"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs"
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/gradient_card"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/total_overs"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_card"
-                        android:orientation="vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="OVER 5"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="OVER 5"
-                            android:textColor="@color/pureWhite"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="88dp"
+                android:minWidth="110dp"
                 android:layout_marginStart="10dp"
                 app:cardBackgroundColor="#F8FFF8"
                 app:cardCornerRadius="3dp"
@@ -96,54 +83,31 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:minWidth="110dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="176 / 6"
-                        android:textColor="@color/text_dark"
-                        android:textSize="30dp"
+                        android:text="WICKET"
+                        android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs1"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:id="@+id/total_overs1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_card"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="OVER 5"
-                            android:textColor="@color/pureWhite"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="88dp"
+                android:minWidth="110dp"
                 android:layout_marginStart="10dp"
                 app:cardBackgroundColor="#F8FFF8"
                 app:cardCornerRadius="3dp"
@@ -153,54 +117,31 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:minWidth="110dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="176 / 6"
-                        android:textColor="@color/text_dark"
-                        android:textSize="30dp"
+                        android:text="1"
+                        android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs2"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:id="@+id/total_overs2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_card"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="OVER 5"
-                            android:textColor="@color/pureWhite"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="88dp"
+                android:minWidth="110dp"
                 android:layout_marginStart="10dp"
                 app:cardBackgroundColor="#F8FFF8"
                 app:cardCornerRadius="3dp"
@@ -210,58 +151,68 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:minWidth="110dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="176 / 6"
-                        android:textColor="@color/text_dark"
-                        android:textSize="30dp"
+                        android:text="6"
+                        android:textSize="30sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@id/total_overs3"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:id="@+id/total_overs3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_card"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="OVER 5"
-                            android:textColor="@color/pureWhite"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="88dp"
+                android:minWidth="110dp"
+                android:layout_marginStart="10dp"
+                app:cardBackgroundColor="#F8FFF8"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minWidth="110dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="0"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
 
     </HorizontalScrollView>
 
-    <com.google.android.material.card.MaterialCardView
+  <!--  <com.google.android.material.card.MaterialCardView
         android:id="@+id/live_score_batsman"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -738,7 +689,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

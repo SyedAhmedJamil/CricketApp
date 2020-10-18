@@ -20,9 +20,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LiveMatchViewModel  extends ViewModel {
 
-    private LiveData<LiveMatch> liveMatch;
+    public LiveData<LiveMatch> liveMatch;
     private LiveMatchRepository liveMatchRepository;
     public String matchId;
+    public boolean isUpdated;
+
+    public void setCallback(Runnable callback) {
+        if(isUpdated)
+            callback.run();
+        else
+            this.callback = callback;
+    }
+
+    private Runnable callback;
 
     public LiveMatchViewModel()
     {
@@ -31,9 +41,19 @@ public class LiveMatchViewModel  extends ViewModel {
 
     public LiveData<LiveMatch> getUpdate()
     {
+        isUpdated = false;
         if (liveMatch == null)
-            liveMatch = liveMatchRepository.getUpdate(matchId);
+            liveMatch = liveMatchRepository.getUpdate(matchId, new Runnable() {
+                @Override
+                public void run() {
+                    isUpdated = true;
+                    if (callback != null)
+                        callback.run();
+                }
+            });
         return liveMatch;
     }
+
+
 
 }

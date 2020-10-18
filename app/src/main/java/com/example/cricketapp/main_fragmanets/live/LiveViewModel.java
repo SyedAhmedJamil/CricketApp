@@ -40,8 +40,8 @@ public class LiveViewModel extends AndroidViewModel {
         return matches;
     }
 
-    void refresh()
+    void refresh(Runnable callback)
     {
-        matchRepository.refresh();
+        matchRepository.refresh(callback);
     }
 }

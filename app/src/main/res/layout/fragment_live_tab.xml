@@ -11,12 +11,15 @@
     </data>
 
     <ScrollView
+        android:id="@+id/scroll_test"
+        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:animateLayoutChanges="true"
             android:id="@+id/live_tab_container"
             android:layout_width="match_parent"
             android:background="#FFFFFF"
@@ -48,7 +51,6 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
                         android:text="BALL"
-                        android:textColor="@color/pureWhite"
                         android:textSize="40dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@id/total_overs"
@@ -72,8 +74,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
-                            android:text='@{"OVER " + viewmodel.update.matchData.currenltyPlayingTeamOvers + "." + viewmodel.update.matchData.currenltyPlayingTeamBallno}'
-                            android:textColor="@color/text_dark"
+                            android:text='@{"OVER " + viewmodel.liveMatch.matchData.currenltyPlayingTeamOvers + "." + viewmodel.liveMatch.matchData.currenltyPlayingTeamBallno}'
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -88,7 +89,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="14dp"
-                app:cardBackgroundColor="#EFEFEF"
+                app:cardBackgroundColor="#535353"
                 app:cardCornerRadius="3dp"
                 app:layout_constraintBottom_toBottomOf="@id/ball_component"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[1] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[1] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -108,9 +109,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[1]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[1]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +120,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[2] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[2] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball2"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -128,9 +128,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[2]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[2]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -140,7 +139,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[3] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[3] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball3"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -148,9 +147,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[3]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[3]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +159,7 @@
 
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[4] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[4] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball4"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -169,9 +167,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[1]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[1]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +179,7 @@
 
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[5] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[5] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball5"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -190,9 +187,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[5]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[5]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +199,7 @@
 
 
                     <TextView
-                        android:visibility='@{viewmodel.update.matchData.recent.split(" \\| ")[6] == null ? View.INVISIBLE : View.VISIBLE }'
+                        android:visibility='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[6] == null ? View.INVISIBLE : View.VISIBLE }'
                         android:id="@+id/textView_ball6"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
@@ -211,9 +207,8 @@
                         android:layout_marginBottom="16dp"
                         android:background="@drawable/over_ball_circle"
                         android:gravity="center"
-                        android:text='@{viewmodel.update.matchData.recent.split(" \\| ")[6]}'
+                        android:text='@{viewmodel.liveMatch.matchData.recent.split(" \\| ")[6]}'
                         android:textAlignment="center"
-                        android:textColor="@color/pureWhite"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -250,8 +245,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@{viewmodel.update.matchData.a}"
-                        android:textColor="@color/text_dark"
+                        android:text="@{viewmodel.liveMatch.matchData.a}"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -266,9 +260,8 @@
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/green_circle"
                         android:gravity="center"
-                        android:text="@{viewmodel.update.matchData.b}"
+                        android:text="@{viewmodel.liveMatch.matchData.b}"
                         android:textSize="20sp"
-                        android:textColor="@color/pureWhite"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView_pk_r"
@@ -286,9 +279,8 @@
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/red_circle"
                         android:gravity="center"
-                        android:text="@{viewmodel.update.matchData.c}"
+                        android:text="@{viewmodel.liveMatch.matchData.c}"
                         android:textSize="20sp"
-                        android:textColor="@color/pureWhite"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -324,8 +316,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@{viewmodel.update.matchData.x}"
-                        android:textColor="@color/text_dark"
+                        android:text="@{viewmodel.liveMatch.matchData.x}"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -340,9 +331,8 @@
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/green_circle"
                         android:gravity="center"
-                        android:text="@{viewmodel.update.matchData.y}"
+                        android:text="@{viewmodel.liveMatch.matchData.y}"
                         android:textSize="20sp"
-                        android:textColor="@color/pureWhite"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView_eng_r"
@@ -360,9 +350,8 @@
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/red_circle"
                         android:gravity="center"
-                        android:text="@{viewmodel.update.matchData.z}"
+                        android:text="@{viewmodel.liveMatch.matchData.z}"
                         android:textSize="20sp"
-                        android:textColor="@color/pureWhite"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -431,7 +420,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="R"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -440,7 +428,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="B"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
 
@@ -450,7 +437,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="4"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -459,7 +445,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="6"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -468,7 +453,6 @@
                                 android:layout_weight=".3"
                                 android:gravity="right"
                                 android:text="SR"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -488,8 +472,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text="@{viewmodel.update.playerDataList.get(1).playerName}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).playerName}"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -498,8 +481,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(1).totalScore}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalScore}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -507,8 +489,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(1).ballsPlayed}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).ballsPlayed}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -516,8 +497,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(1).totalFours}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalFours}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -525,8 +505,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(1).totalSix}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalSix}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -534,8 +513,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".3"
                                 android:gravity="right"
-                                android:text="@{viewmodel.update.playerDataList.get(1).strikeRate}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(1).strikeRate}"
                                 android:textSize="13sp" />
 
                         </LinearLayout>
@@ -555,8 +533,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text="@{viewmodel.update.playerDataList.get(2).playerName}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).playerName}"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -565,8 +542,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(2).totalScore}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalScore}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -574,8 +550,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(2).ballsPlayed}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).ballsPlayed}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -583,8 +558,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(2).totalFours}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalFours}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -592,8 +566,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(2).totalSix}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalSix}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -601,8 +574,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".3"
                                 android:gravity="right"
-                                android:text="@{viewmodel.update.playerDataList.get(2).strikeRate}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(2).strikeRate}"
                                 android:textSize="13sp" />
 
                         </LinearLayout>
@@ -670,7 +642,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="O"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -679,7 +650,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="M"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
 
@@ -689,7 +659,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="R"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -698,7 +667,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="W"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -707,7 +675,6 @@
                                 android:layout_weight=".3"
                                 android:gravity="right"
                                 android:text="Eco"
-                                android:textColor="@color/pureWhiteOverlay"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -727,8 +694,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text="@{viewmodel.update.playerDataList.get(0).playerName}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).playerName}"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -737,8 +703,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(0).ball}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).ball}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -747,7 +712,6 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="0"
-                                android:textColor="@color/text_dark"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -755,8 +719,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(0).totalScore}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalScore}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -764,8 +727,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
-                                android:text="@{viewmodel.update.playerDataList.get(0).totalOut}"
-                                android:textColor="@color/text_dark"
+                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalOut}"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -774,7 +736,6 @@
                                 android:layout_weight=".3"
                                 android:gravity="right"
                                 android:text="0"
-                                android:textColor="@color/text_dark"
                                 android:textSize="13sp" />
 
                         </LinearLayout>
