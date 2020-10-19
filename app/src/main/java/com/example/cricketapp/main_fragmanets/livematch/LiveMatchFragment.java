@@ -98,17 +98,6 @@ public class LiveMatchFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    /*    Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                binding.pager.setVisibility(View.VISIBLE);
-            }
-        },2000);
-    */}
 
     private class ViewPager2Adapter extends FragmentStateAdapter {
         public ViewPager2Adapter(Fragment fragment) {

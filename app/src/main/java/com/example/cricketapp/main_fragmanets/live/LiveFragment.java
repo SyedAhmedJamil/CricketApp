@@ -44,8 +44,8 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         View view = inflater.inflate(R.layout.fragment_live, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.match_details_recyclerview);
         recyclerView.setHasFixedSize(true);
-//        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
-//        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
         MaterialToolbar topAppBar = view.findViewById(R.id.topAppBar);
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

@@ -21,6 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LiveMatchRepository {
 
     private MutableLiveData<LiveMatch> liveMatch;
+    private String oldRecordId;
+
     static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     public  LiveMatchRepository()
     {
@@ -42,7 +44,8 @@ public class LiveMatchRepository {
             public void onResponse(Call<LiveMatch> call, Response<LiveMatch> response) {
                 liveMatch.setValue(response.body());
                 callback.run();
-                checkForUpdates(response.body().matchData.getRecordId(),matchId);
+                oldRecordId = response.body().matchData.getRecordId();
+                checkForUpdates(matchId);
             }
 
             @Override
@@ -53,8 +56,6 @@ public class LiveMatchRepository {
 
         return liveMatch;
     }
-
-
 
     private void getNewUpdate(String matchId) {
 
@@ -80,7 +81,7 @@ public class LiveMatchRepository {
 
     }
 
-    private void checkForUpdates(String oldRecordId ,String matchId)
+    private void checkForUpdates(String matchId)
     {
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -100,6 +101,7 @@ public class LiveMatchRepository {
                         if (!recordId.equals(oldRecordId))
                         {
                             getNewUpdate(matchId);
+                            oldRecordId = recordId;
                         }
                     }
 
