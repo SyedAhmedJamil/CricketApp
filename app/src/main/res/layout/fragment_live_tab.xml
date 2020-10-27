@@ -23,7 +23,7 @@
             android:id="@+id/live_tab_container"
             android:layout_width="match_parent"
             android:background="#FFFFFF"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <com.google.android.material.card.MaterialCardView
@@ -33,8 +33,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="10dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="#FDFCFF"
                 app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -46,55 +47,70 @@
                     <FrameLayout
                         android:id="@+id/left_container"
                         android:layout_width="wrap_content"
-                        android:minWidth="128dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient_card"
+                        android:minWidth="128dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/over_scores_container">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
 
                             android:id="@+id/textView_ball"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="10dp"
-                            android:text="3"
+                            android:text="BALL"
                             android:textAlignment="center"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:textSize="40sp"
+                            android:textColor="#F4F4F4"
+                            android:textSize="35sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@id/total_overs"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintBottom_toTopOf="@id/total_overs" />
 
                     </FrameLayout>
 
-                    <HorizontalScrollView
-                        android:id="@+id/over_scores_container"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:scrollbars="none"
+                    <com.example.cricketapp.VerticalTextView
+
+                        android:id="@+id/middle_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:background="#FAF3FD"
+                        android:gravity="center"
+                        android:text='@{"OVER " + viewmodel.liveMatch.matchData.currenltyPlayingTeamOvers + "." + viewmodel.liveMatch.matchData.currenltyPlayingTeamBallno}'
+                        android:textAlignment="gravity"
+                        android:textColor="@color/colorPrimaryVariant"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <HorizontalScrollView
+                        app:cardBackgroundColor="#FDFCFF"
+                        android:id="@+id/over_scores_container"
+                        android:layout_width="0dp"
+                        android:fadingEdge="horizontal"
+                        android:layout_height="0dp"
+                        android:scrollbars="none"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/middle_container"
                         app:layout_constraintStart_toEndOf="@+id/left_container"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
+                            app:cardBackgroundColor="#FDFCFF"
                             android:id="@+id/over_scores"
                             android:animateLayoutChanges="true"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:paddingEnd="10dp"
                             android:orientation="horizontal">
-
-
                         </LinearLayout>
 
                     </HorizontalScrollView>
@@ -173,7 +189,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="3dp"
-                app:cardElevation="2dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FDFCFF"
                 app:layout_constraintEnd_toStartOf="@+id/live_prediction_teamB"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -188,6 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:textColor="@color/blackVariant"
                         android:text="@{viewmodel.liveMatch.matchData.a}"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -244,7 +262,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="3dp"
-                app:cardElevation="2dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FDFCFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/live_prediction_teamA"
@@ -259,6 +278,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:textColor="@color/blackVariant"
                         android:text="@{viewmodel.liveMatch.matchData.x}"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -316,8 +336,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="10dp"
-                app:cardBackgroundColor="#F8FFF8"
+                app:cardBackgroundColor="#FDFCFF"
                 app:cardCornerRadius="3dp"
+                app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/live_prediction_teamA">
@@ -354,7 +375,7 @@
                                 android:layout_weight="1"
                                 android:gravity="start"
                                 android:text="Batsman"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -363,6 +384,7 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="R"
+                                android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -371,6 +393,7 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="B"
+                                android:textColor="@color/white"
                                 android:textStyle="bold" />
 
 
@@ -379,6 +402,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="4"
                                 android:textStyle="bold" />
 
@@ -388,14 +412,16 @@
                                 android:layout_weight=".2"
                                 android:gravity="center"
                                 android:text="6"
+                                android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight=".3"
+                                android:layout_weight=".2"
                                 android:gravity="right"
                                 android:text="SR"
+                                android:textColor="@color/white"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -415,6 +441,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).playerName}"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -424,6 +451,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalScore}"
                                 android:textSize="13sp" />
 
@@ -432,6 +460,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).ballsPlayed}"
                                 android:textSize="13sp" />
 
@@ -440,6 +469,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalFours}"
                                 android:textSize="13sp" />
 
@@ -448,6 +478,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).totalSix}"
                                 android:textSize="13sp" />
 
@@ -456,6 +487,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".3"
                                 android:gravity="right"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(1).strikeRate}"
                                 android:textSize="13sp" />
 
@@ -476,6 +508,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).playerName}"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -485,6 +518,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalScore}"
                                 android:textSize="13sp" />
 
@@ -493,6 +527,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).ballsPlayed}"
                                 android:textSize="13sp" />
 
@@ -501,6 +536,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalFours}"
                                 android:textSize="13sp" />
 
@@ -509,6 +545,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".2"
                                 android:gravity="center"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).totalSix}"
                                 android:textSize="13sp" />
 
@@ -517,6 +554,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight=".3"
                                 android:gravity="right"
+                                android:textColor="@color/blackVariant"
                                 android:text="@{viewmodel.liveMatch.playerDataList.get(2).strikeRate}"
                                 android:textSize="13sp" />
 
@@ -529,167 +567,179 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/live_score_baller"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="#F8FFF8"
-                app:cardCornerRadius="3dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/live_score_batsman">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                       <com.google.android.material.card.MaterialCardView
+                           android:id="@+id/live_score_baller"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginStart="10dp"
+                           android:layout_marginTop="24dp"
+                           android:layout_marginEnd="10dp"
+                           android:layout_marginBottom="24dp"
+                           app:cardBackgroundColor="#FDFCFF"
+                           app:cardCornerRadius="3dp"
+                           app:cardElevation="2dp"
+                           app:layout_constraintBottom_toBottomOf="parent"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toBottomOf="@id/live_score_batsman">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                           <androidx.constraintlayout.widget.ConstraintLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                               <LinearLayout
+                                   android:layout_width="0dp"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="vertical"
+                                   android:visibility="visible"
+                                   app:layout_constraintEnd_toEndOf="parent"
+                                   app:layout_constraintStart_toStartOf="parent"
+                                   app:layout_constraintTop_toTopOf="parent">
 
-                            android:background="@drawable/gradient_card"
-                            android:gravity="end"
-                            android:orientation="horizontal"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="11dp"
-                            android:paddingRight="20dp"
-                            android:paddingBottom="11dp">
+                                   <LinearLayout
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
 
-                            <TextView
+                                       android:background="@drawable/gradient_card"
+                                       android:gravity="end"
+                                       android:orientation="horizontal"
+                                       android:paddingLeft="20dp"
+                                       android:paddingTop="11dp"
+                                       android:paddingRight="20dp"
+                                       android:paddingBottom="11dp">
 
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="start"
-                                android:text="Baller"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold" />
+                                       <TextView
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="O"
-                                android:textStyle="bold" />
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight="1"
+                                           android:gravity="start"
+                                           android:text="Baller"
+                                           android:textColor="#FFFFFF"
+                                           android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="M"
-                                android:textStyle="bold" />
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:text="O"
+                                           android:textColor="@color/white"
+                                           android:textStyle="bold" />
 
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="R"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="W"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".3"
-                                android:gravity="right"
-                                android:text="Eco"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:orientation="horizontal"
-                            android:paddingLeft="16dp"
-                            android:paddingTop="8dp"
-                            android:paddingRight="16dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="start"
-                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).playerName}"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).ball}"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="0"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalScore}"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".2"
-                                android:gravity="center"
-                                android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalOut}"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight=".3"
-                                android:gravity="right"
-                                android:text="0"
-                                android:textSize="13sp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:text="M"
+                                           android:textColor="@color/white"
+                                           android:textStyle="bold" />
 
 
-            </com.google.android.material.card.MaterialCardView>
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:text="R"
+                                           android:textColor="@color/white"
+                                           android:textStyle="bold" />
 
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:text="W"
+                                           android:textColor="@color/white"
+                                           android:textStyle="bold" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="right"
+                                           android:text="Eco"
+                                           android:textColor="@color/white"
+                                           android:textStyle="bold" />
+
+                                   </LinearLayout>
+
+                                   <LinearLayout
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:gravity="end"
+                                       android:orientation="horizontal"
+                                       android:paddingLeft="16dp"
+                                       android:paddingTop="8dp"
+                                       android:paddingRight="16dp"
+                                       android:paddingBottom="8dp">
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight="1"
+                                           android:gravity="start"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="@{viewmodel.liveMatch.playerDataList.get(0).playerName}"
+                                           android:textSize="13sp"
+                                           android:textStyle="bold" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="@{viewmodel.liveMatch.playerDataList.get(0).ball}"
+                                           android:textSize="13sp" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="0"
+                                           android:textSize="13sp" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalScore}"
+                                           android:textSize="13sp" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".2"
+                                           android:gravity="center"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="@{viewmodel.liveMatch.playerDataList.get(0).totalOut}"
+                                           android:textSize="13sp" />
+
+                                       <TextView
+                                           android:layout_width="0dp"
+                                           android:layout_height="wrap_content"
+                                           android:layout_weight=".3"
+                                           android:gravity="right"
+                                           android:textColor="@color/blackVariant"
+                                           android:text="0"
+                                           android:textSize="13sp" />
+
+                                   </LinearLayout>
+
+                               </LinearLayout>
+
+                           </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                       </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

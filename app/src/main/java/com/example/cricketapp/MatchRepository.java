@@ -43,9 +43,7 @@ public class MatchRepository {
             @Override
             public void onResponse(Call<MatchList> call, Response<MatchList> response) {
                 callback.run();
-                for (Match match : response.body().matchList) {
-                    insert(match);
-                }
+                insertAll(response.body().matchList);
             }
 
             @Override
@@ -55,18 +53,19 @@ public class MatchRepository {
         });
     }
 
-    public void insert(Match match) {
+    public void insertAll(List<Match> matchList) {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    matchDAO.insert(match);
+                    matchDAO.deleteAll();
+                    for (Match match : matchList) {
+                        matchDAO.insert(match);
+                    }
                 } catch (Exception e) {
                     //Do nothing
                 }
-
             }
         });
-
     }
 }

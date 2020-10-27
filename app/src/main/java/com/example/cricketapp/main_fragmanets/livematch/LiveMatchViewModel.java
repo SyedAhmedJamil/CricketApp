@@ -23,7 +23,11 @@ public class LiveMatchViewModel  extends ViewModel {
     public LiveData<LiveMatch> liveMatch;
     private LiveMatchRepository liveMatchRepository;
     public String matchId;
+    public String teamAName;
+    public String teamBName;
+    public String currentBaller;
     public boolean isUpdated;
+    private Runnable callback;
 
     public void setCallback(Runnable callback) {
         if(isUpdated)
@@ -31,8 +35,6 @@ public class LiveMatchViewModel  extends ViewModel {
         else
             this.callback = callback;
     }
-
-    private Runnable callback;
 
     public LiveMatchViewModel()
     {

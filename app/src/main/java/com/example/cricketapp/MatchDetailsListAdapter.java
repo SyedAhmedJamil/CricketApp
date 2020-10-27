@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
 
     private List<Match> matchList;
     private OnClickListener onClickListener;
+
+    public MatchDetailsListAdapter(List<Match> matchList) {
+        this.matchList = matchList;
+    }
 
     @NonNull
     @Override
@@ -37,11 +42,12 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
 //            holder.matchDate.setText(matchDetails.getStartDate());
 //            holder.matchTime.setText(matchDetails.getStartTime());
             holder.matchOvers.setText(match.getTotalover().split("\\.")[0]);
+            holder.matchMessage.setText(match.getMessage());
 
             holder.matchItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickListener.onClick(match.getMainScreenMatchId());
+                    onClickListener.onClick(match.getMainScreenMatchId(),match.getTeamAname(),match.getTeamBname());
                 }
             });
         }
@@ -60,6 +66,12 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
         notifyDataSetChanged();
     }
 
+
+    public void setMatchItem(Match matchItem) {
+        matchList.add(matchItem);
+        notifyItemInserted(matchList.size() - 1);
+    }
+
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
@@ -72,6 +84,7 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
         private TextView matchOvers;
         private TextView teamAName;
         private TextView teamBName;
+        private TextView matchMessage;
         private MaterialCardView matchItem;
 
         public MatchDetailsViewHolder(@NonNull View itemView) {
@@ -81,6 +94,7 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
             teamBName = itemView.findViewById(R.id.team_b_name);
             matchItem = itemView.findViewById(R.id.matchItem);
             matchTitle = itemView.findViewById(R.id.match_title);
+            matchMessage = itemView.findViewById(R.id.match_message);
 //            matchDate = itemView.findViewById(R.id.match_date);
 //            matchTime = itemView.findViewById(R.id.match_time);
             matchOvers = itemView.findViewById(R.id.match_overs);
@@ -88,6 +102,6 @@ public class MatchDetailsListAdapter extends RecyclerView.Adapter<MatchDetailsLi
     }
 
     public interface OnClickListener {
-        void onClick(Integer matchId);
+        void onClick(Integer matchId,String teamAName, String teamBName);
     }
 }

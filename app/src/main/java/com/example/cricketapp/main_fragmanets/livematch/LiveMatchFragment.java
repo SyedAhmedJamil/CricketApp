@@ -42,6 +42,8 @@ public class LiveMatchFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(LiveMatchViewModel.class);
         viewModel.matchId = getArguments().getString("match_id");
+        viewModel.teamAName = getArguments().getString("team_a_name");
+        viewModel.teamBName = getArguments().getString("team_b_name");
         viewModel.getUpdate();
     }
 

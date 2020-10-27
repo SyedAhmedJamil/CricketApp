@@ -16,6 +16,8 @@ import com.example.cricketapp.MatchDetailsListAdapter;
 import com.example.cricketapp.R;
 import com.example.cricketapp.UnsafeOkHttpClient;
 
+import java.util.ArrayList;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,12 +34,8 @@ public class UpcomingFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recents, container, false);
+        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.match_details_recyclerview);
-        adapter = new MatchDetailsListAdapter();
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
